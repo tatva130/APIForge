@@ -5,6 +5,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>APIQuest — API & Automation Learning Platform</title>
+
+  <!-- ── FAVICON ── -->
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+
+  <!-- ── SEO ── -->
+  <meta name="description" content="APIQuest — A 28-day structured API & automation learning platform. Master REST APIs, Postman, Python, Zapier, Make.com, n8n, OAuth2, and AI integrations with daily projects and XP tracking.">
+  <meta name="keywords" content="API learning, REST API, Postman, Python automation, Zapier, Make.com, n8n, webhooks, OAuth2, OpenAI API, freelancing, automation developer, API course">
+  <meta name="author" content="APIQuest">
+  <meta name="robots" content="index, follow">
+
+  <!-- ── OPEN GRAPH ── -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="APIQuest — API & Automation Learning Platform">
+  <meta property="og:description" content="Master REST APIs, automation tools, and AI integrations in 28 days. Daily projects, XP system, and career-ready skills included.">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:site_name" content="APIQuest">
+  <meta property="og:locale" content="en_US">
+
+  <!-- ── TWITTER CARD ── -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="APIQuest — API & Automation Learning Platform">
+  <meta name="twitter:description" content="Master REST APIs, automation tools, and AI integrations in 28 days.">
+  <meta name="twitter:image" content="">
+
+  <!-- ── PWA / MANIFEST ── -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6366f1" id="theme-color-meta">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="APIQuest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="APIQuest">
+
+  <!-- ── ANTI-FOUC: Apply theme before page renders ── -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('apiquest_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
@@ -1975,6 +2018,212 @@
       margin-top: 16px;
       flex-wrap: wrap;
     }
+
+    /* ── LIGHT THEME ── */
+    html[data-theme="light"] {
+      --bg-base: #eef0ff;
+      --bg-surface: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-glass: rgba(99, 102, 241, 0.05);
+      --bg-glass-hover: rgba(99, 102, 241, 0.1);
+      --border: rgba(99, 102, 241, 0.14);
+      --border-accent: rgba(99, 102, 241, 0.4);
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --shadow-card: 0 4px 24px rgba(99, 102, 241, 0.12);
+      --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.18);
+    }
+
+    html[data-theme="light"] body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+    }
+
+    /* ── FLOATING TOOLBAR ── */
+    .floating-toolbar {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 6px 12px;
+      box-shadow: 0 8px 36px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(24px);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .floating-toolbar:hover {
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.12);
+    }
+
+    .toolbar-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: var(--transition);
+      color: var(--text-secondary);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .toolbar-btn:hover {
+      background: var(--bg-glass-hover);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .toolbar-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      margin: 0 4px;
+      flex-shrink: 0;
+    }
+
+    .toolbar-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      font-family: var(--font-main);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .toolbar-btn:hover .toolbar-tooltip {
+      opacity: 1;
+    }
+
+    #pwa-install-btn {
+      display: none;
+    }
+
+    #pwa-install-btn.visible {
+      display: flex;
+    }
+
+    /* ── KEYBOARD SHORTCUT PANEL ── */
+    .shortcut-panel-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 8500;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.2s ease;
+    }
+
+    .shortcut-panel-overlay.active {
+      display: flex;
+    }
+
+    .shortcut-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 82vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .shortcut-panel-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .shortcut-group {
+      margin-bottom: 20px;
+    }
+
+    .shortcut-group-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .shortcut-row:last-child {
+      border-bottom: none;
+    }
+
+    .shortcut-keys {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 26px;
+      height: 22px;
+      padding: 0 6px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+    }
+
+    .kbd-sep {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* ── IMPORT INPUT (HIDDEN) ── */
+    #import-json-input {
+      display: none;
+    }
   </style>
 </head>
 
@@ -2244,6 +2493,70 @@
         <button class="btn btn-primary" onclick="saveVaultURI()">💾 Save Vault</button>
         <button class="btn btn-ghost" onclick="closeVaultModal()">✕ Cancel</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Hidden file input for JSON import -->
+  <input type="file" id="import-json-input" accept=".json" />
+
+  <!-- ── FLOATING TOOLBAR ── -->
+  <div class="floating-toolbar" id="floating-toolbar">
+    <button class="toolbar-btn" id="pwa-install-btn" onclick="installPWA()" title="Install App">
+      📲
+      <div class="toolbar-tooltip">Install App</div>
+    </button>
+    <div class="toolbar-divider" id="install-divider" style="display:none;"></div>
+    <button class="toolbar-btn" id="theme-btn" onclick="toggleTheme()">
+      🌙
+      <div class="toolbar-tooltip">Toggle Theme (T)</div>
+    </button>
+    <div class="toolbar-divider"></div>
+    <button class="toolbar-btn" onclick="exportProgress()" title="Export Progress">
+      📤
+      <div class="toolbar-tooltip">Export Progress (E)</div>
+    </button>
+    <button class="toolbar-btn" onclick="document.getElementById('import-json-input').click()" title="Import Progress">
+      📥
+      <div class="toolbar-tooltip">Import Progress</div>
+    </button>
+    <div class="toolbar-divider"></div>
+    <button class="toolbar-btn" onclick="openShortcutPanel()" title="Keyboard Shortcuts">
+      ⌨️
+      <div class="toolbar-tooltip">Shortcuts (?)</div>
+    </button>
+  </div>
+
+  <!-- ── KEYBOARD SHORTCUTS PANEL ── -->
+  <div class="shortcut-panel-overlay" id="shortcut-panel-overlay">
+    <div class="shortcut-panel">
+      <div class="shortcut-panel-title">⌨️ Keyboard Shortcuts</div>
+
+      <div class="shortcut-group">
+        <div class="shortcut-group-label">Navigation — press G then key</div>
+        <div class="shortcut-row"><span>Dashboard</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">D</span></span></div>
+        <div class="shortcut-row"><span>Progress &amp; XP</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">P</span></span></div>
+        <div class="shortcut-row"><span>Skill Tree</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">S</span></span></div>
+        <div class="shortcut-row"><span>Achievements</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">A</span></span></div>
+        <div class="shortcut-row"><span>Week 1</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">1</span></span></div>
+        <div class="shortcut-row"><span>Week 2</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">2</span></span></div>
+        <div class="shortcut-row"><span>Week 3</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">3</span></span></div>
+        <div class="shortcut-row"><span>Week 4</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">4</span></span></div>
+        <div class="shortcut-row"><span>Portfolio Board</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">O</span></span></div>
+        <div class="shortcut-row"><span>Internship Tracker</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">I</span></span></div>
+        <div class="shortcut-row"><span>Freelance Tracker</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">F</span></span></div>
+        <div class="shortcut-row"><span>Resource Hub</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">R</span></span></div>
+        <div class="shortcut-row"><span>Obsidian Vault</span><span class="shortcut-keys"><span class="kbd">G</span><span class="kbd-sep">then</span><span class="kbd">V</span></span></div>
+      </div>
+
+      <div class="shortcut-group">
+        <div class="shortcut-group-label">Actions</div>
+        <div class="shortcut-row"><span>Show this panel</span><span class="shortcut-keys"><span class="kbd">?</span></span></div>
+        <div class="shortcut-row"><span>Toggle dark / light theme</span><span class="shortcut-keys"><span class="kbd">T</span></span></div>
+        <div class="shortcut-row"><span>Export progress as JSON</span><span class="shortcut-keys"><span class="kbd">E</span></span></div>
+        <div class="shortcut-row"><span>Close this panel</span><span class="shortcut-keys"><span class="kbd">Esc</span></span></div>
+      </div>
+
+      <button class="btn btn-ghost" onclick="closeShortcutPanel()" style="margin-top:8px;width:100%;justify-content:center;">✕ Close</button>
     </div>
   </div>
 
@@ -4956,6 +5269,258 @@
     renderResources();
     renderProgress();
     renderRoadmap();
+
+    // ══════════════════════════════════════════════════════════
+    // ANALYTICS-READY ARCHITECTURE
+    // ══════════════════════════════════════════════════════════
+    const Analytics = {
+      _sessionId: Math.random().toString(36).slice(2),
+      enabled: true,
+
+      track(event, data = {}) {
+        if (!this.enabled) return;
+        const payload = {
+          event,
+          timestamp: Date.now(),
+          sessionId: this._sessionId,
+          url: window.location.href,
+          ...data
+        };
+        // Fire hookable DOM event — any analytics lib can listen
+        window.dispatchEvent(new CustomEvent('apiquest:track', { detail: payload }));
+        // Dev console logging
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+          console.debug('%c[Analytics]', 'color:#6366f1;font-weight:bold', event, data);
+        }
+        // ─ Stub: Google Analytics 4 ─
+        // if (typeof gtag !== 'undefined') gtag('event', event, data);
+        // ─ Stub: Mixpanel ─
+        // if (typeof mixpanel !== 'undefined') mixpanel.track(event, data);
+        // ─ Stub: Segment ─
+        // if (typeof analytics !== 'undefined') analytics.track(event, data);
+        // ─ Stub: PostHog ─
+        // if (typeof posthog !== 'undefined') posthog.capture(event, data);
+      },
+
+      page(viewId) {
+        this.track('page_view', { page: viewId });
+      }
+    };
+
+    // Non-invasive MutationObserver: fires Analytics.page() on view changes
+    (function() {
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(m => {
+          if (m.type === 'attributes' && m.attributeName === 'class') {
+            const el = m.target;
+            if (el.classList.contains('view') && el.classList.contains('active')) {
+              Analytics.page(el.id.replace('view-', ''));
+            }
+          }
+        });
+      });
+      document.querySelectorAll('.view').forEach(v =>
+        observer.observe(v, { attributes: true, attributeFilter: ['class'] })
+      );
+    })();
+
+    // ══════════════════════════════════════════════════════════
+    // DARK / LIGHT THEME
+    // ══════════════════════════════════════════════════════════
+    const THEME_KEY = 'apiquest_theme';
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem(THEME_KEY, theme);
+      const btn = document.getElementById('theme-btn');
+      if (btn) {
+        // Replace only the text node, not the tooltip div
+        btn.childNodes[0].textContent = theme === 'dark' ? '\ud83c\udf19' : '\u2600\ufe0f';
+      }
+      const meta = document.getElementById('theme-color-meta');
+      if (meta) meta.content = theme === 'dark' ? '#0a0b0f' : '#eef0ff';
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      showToast(next === 'dark' ? '\ud83c\udf19 Dark mode' : '\u2600\ufe0f Light mode', '');
+      Analytics.track('theme_toggle', { theme: next });
+    }
+
+    // Sync theme button state with stored preference on load
+    (function() {
+      const stored = localStorage.getItem(THEME_KEY) || 'dark';
+      const btn = document.getElementById('theme-btn');
+      if (btn) btn.childNodes[0].textContent = stored === 'dark' ? '\ud83c\udf19' : '\u2600\ufe0f';
+    })();
+
+    // ══════════════════════════════════════════════════════════
+    // EXPORT / IMPORT PROGRESS JSON
+    // ══════════════════════════════════════════════════════════
+    function exportProgress() {
+      const data = {
+        exportedAt: new Date().toISOString(),
+        version: 'apiquest_v2',
+        state: STATE
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `apiquest-progress-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('\ud83d\udce4 Progress exported!', 'success-toast');
+      Analytics.track('export_progress', { xp: STATE.xp, daysCompleted: Object.values(STATE.completedDays).filter(Boolean).length });
+    }
+
+    document.getElementById('import-json-input').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        try {
+          const parsed = JSON.parse(ev.target.result);
+          const importedState = parsed.state || parsed;
+          // Validate it looks like APIQuest data
+          if (typeof importedState !== 'object' || importedState === null ||
+              (!('completedDays' in importedState) && !('xp' in importedState))) {
+            showToast('\u274c Invalid progress file. Make sure it is an APIQuest export.', '');
+            return;
+          }
+          // Merge missing keys with defaults
+          Object.keys(DEFAULT_STATE).forEach(k => {
+            if (!(k in importedState)) importedState[k] = DEFAULT_STATE[k];
+          });
+          STATE = importedState;
+          saveState();
+          // Full re-render
+          renderDashboard(); renderSkillTree(); renderBadges();
+          renderWeekView(WEEK1, 'week1-container');
+          renderWeekView(WEEK2, 'week2-container');
+          renderWeekView(WEEK3, 'week3-container');
+          renderWeekView(WEEK4, 'week4-container');
+          renderPortfolio(); renderInternship(); renderFreelance();
+          renderResources(); renderProgress(); renderRoadmap();
+          showToast('\u2705 Progress imported successfully!', 'success-toast');
+          Analytics.track('import_progress', { xp: STATE.xp });
+        } catch (err) {
+          showToast('\u274c Failed to read file. Please use a valid APIQuest export.', '');
+        }
+      };
+      reader.readAsText(file);
+      this.value = ''; // allow re-import of the same file
+    });
+
+    // ══════════════════════════════════════════════════════════
+    // PWA INSTALL
+    // ══════════════════════════════════════════════════════════
+    let _deferredInstallPrompt = null;
+
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      _deferredInstallPrompt = e;
+      const btn = document.getElementById('pwa-install-btn');
+      const div = document.getElementById('install-divider');
+      if (btn) btn.classList.add('visible');
+      if (div) div.style.display = 'block';
+    });
+
+    window.addEventListener('appinstalled', () => {
+      _deferredInstallPrompt = null;
+      const btn = document.getElementById('pwa-install-btn');
+      const div = document.getElementById('install-divider');
+      if (btn) btn.classList.remove('visible');
+      if (div) div.style.display = 'none';
+      showToast('\ud83d\udcf2 APIQuest installed!', 'success-toast');
+      Analytics.track('pwa_installed');
+    });
+
+    async function installPWA() {
+      if (!_deferredInstallPrompt) {
+        showToast('\ud83d\udcf2 Use Chrome or Edge and visit via HTTP to install as an app.', '');
+        return;
+      }
+      _deferredInstallPrompt.prompt();
+      const { outcome } = await _deferredInstallPrompt.userChoice;
+      _deferredInstallPrompt = null;
+      Analytics.track('pwa_install_prompt', { outcome });
+    }
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => Analytics.track('sw_registered', { scope: reg.scope }))
+          .catch(() => {}); // fail silently when not on HTTP
+      });
+    }
+
+    // ══════════════════════════════════════════════════════════
+    // KEYBOARD SHORTCUTS
+    // ══════════════════════════════════════════════════════════
+    // GitHub-style "g then key" sequences + single-key actions
+    const SHORTCUT_MAP = {
+      'g d': () => showView('dashboard'),
+      'g p': () => showView('progress'),
+      'g s': () => showView('skilltree'),
+      'g a': () => showView('badges'),
+      'g 1': () => showView('week1'),
+      'g 2': () => showView('week2'),
+      'g 3': () => showView('week3'),
+      'g 4': () => showView('week4'),
+      'g o': () => showView('portfolio'),
+      'g i': () => showView('internship'),
+      'g f': () => showView('freelance'),
+      'g r': () => showView('resources'),
+      'g v': () => handleObsidianClick(),
+      '?':   () => openShortcutPanel(),
+      't':   () => toggleTheme(),
+      'e':   () => exportProgress(),
+    };
+
+    let _kbBuffer = '';
+    let _kbTimer  = null;
+
+    document.addEventListener('keydown', function(e) {
+      // Skip if user is in an input, textarea, or editable area
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+      // Skip modifier-key combos
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      // Escape always closes modals
+      if (e.key === 'Escape') { closeShortcutPanel(); closeVaultModal(); return; }
+
+      const key = e.key.toLowerCase();
+      _kbBuffer = _kbBuffer ? _kbBuffer + ' ' + key : key;
+
+      clearTimeout(_kbTimer);
+      _kbTimer = setTimeout(() => { _kbBuffer = ''; }, 700);
+
+      if (SHORTCUT_MAP[_kbBuffer]) {
+        e.preventDefault();
+        SHORTCUT_MAP[_kbBuffer]();
+        _kbBuffer = '';
+        clearTimeout(_kbTimer);
+        Analytics.track('keyboard_shortcut', { key: _kbBuffer || key });
+      }
+    });
+
+    function openShortcutPanel() {
+      document.getElementById('shortcut-panel-overlay').classList.add('active');
+    }
+
+    function closeShortcutPanel() {
+      document.getElementById('shortcut-panel-overlay').classList.remove('active');
+    }
+
+    // Close shortcut panel on overlay click
+    document.getElementById('shortcut-panel-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeShortcutPanel();
+    });
   </script>
 </body>
 
