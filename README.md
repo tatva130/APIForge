@@ -17,7 +17,8 @@
 Get a look at the active master workspace dashboard tracking daily missions, milestones, and developer readiness metrics.
 
 <p align="center">
-  <img src="./assets/dashboard.png" alt="APIForge Dashboard Preview" width="100%">
+  <img src="<img width="1920" height="1080" alt="dashboard" src="https://github.com/user-attachments/assets/2219dbc8-8675-40a2-8783-484cf26abe98" />
+" alt="APIForge Dashboard Preview" width="100%">
 </p>
 
 ---
@@ -47,21 +48,25 @@ Take a deeper dive into the inner interface tabs built across the core system ar
   <tr>
     <td width="50%">
       <p align="center"><b>🗺️ Interactive Skill Tree Roadmapping</b></p>
-      <img src="./assets/Skill-Tree.png" alt="Skill Tree Preview" width="100%">
+      <img src="<img width="1920" height="1080" alt="Skill-Tree" src="https://github.com/user-attachments/assets/df313469-bbb6-4ca3-9ae9-9618b51ef232" />
+" alt="Skill Tree Preview" width="100%">
     </td>
     <td width="50%">
       <p align="center"><b>📚 Searchable Resource Hub Space</b></p>
-      <img src="./assets/Resource-hub.png" alt="Resource Hub Preview" width="100%">
+      <img src="<img width="1920" height="1080" alt="Resource-hub" src="https://github.com/user-attachments/assets/dd867a5a-5ac8-4f34-bcfe-cf00bea16639" />
+" alt="Resource Hub Preview" width="100%">
     </td>
   </tr>
   <tr>
     <td width="50%">
       <p align="center"><b>📊 Analytics Progress & XP Heatmap</b></p>
-      <img src="./assets/Progress-Tracker.png" alt="Progress Map Preview" width="100%">
+      <img src="<img width="1920" height="1080" alt="Progress-Tracker" src="https://github.com/user-attachments/assets/74249b75-e66b-4564-b63b-d3de927f6b3d" />
+" alt="Progress Map Preview" width="100%">
     </td>
     <td width="50%">
       <p align="center"><b>🏆 Gamified Achievements & Milestones</b></p>
-      <img src="./assets/Achievements.png" alt="Achievements Preview" width="100%">
+      <img src="<img width="1920" height="1080" alt="Achievements" src="https://github.com/user-attachments/assets/c74042c6-9ce3-4160-a993-3bbb2b36d5b8" />
+" alt="Achievements Preview" width="100%">
     </td>
   </tr>
 </table>
